@@ -1,0 +1,322 @@
+\hypertarget{classPoseEstimator}{}\section{Pose\+Estimator Class Reference}
+\label{classPoseEstimator}\index{Pose\+Estimator@{Pose\+Estimator}}
+
+
+Main Pose Estimator Class carrying out all operations using complimentary filter.  
+
+
+
+
+{\ttfamily \#include $<$Pose\+Estimator.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPoseEstimator_ab849608b7d2bc4b7c9e3bee1219a3997}{Pose\+Estimator} (double \&, double \&, int \&, double \&)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classPoseEstimator_a68fc4e65d149c62721d5f6d25e7f0181}{preprocess\+Steering\+Angle} ()
+\begin{DoxyCompactList}\small\item\em To process steering angle if its more than 90 degree. \end{DoxyCompactList}\item 
+vector$<$ double $>$ \hyperlink{classPoseEstimator_adafcdfe397a5f4242429ac8b6fc44d5e}{estimate} (double \&, double \&, int \&, double \&)
+\begin{DoxyCompactList}\small\item\em To Estimate the poses of the tricycle using given data. \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_aabd43cbb110bf359e4236d055730cf39}{integrate\+Variable} (double, double)
+\begin{DoxyCompactList}\small\item\em To integrate velocity to get position ;angular velocity to get theta. \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_a3d51891c28fb88bb320678b499a1baec}{complimentary\+Filter} (double, double)
+\begin{DoxyCompactList}\small\item\em Complimentary Filter which combines encoder and gyroscope measurements to get good predictions. \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_a2e17dfd1a685355806d63dfde8dcb3e1}{calculate\+Dt} ()
+\begin{DoxyCompactList}\small\item\em To calculate the values of private variables. \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_acedaa62b4904ba067f3eae3e548e6b91}{calculate\+Steering\+Velocity} ()
+\begin{DoxyCompactList}\small\item\em To calculate steering velocity = (tick difference)$\ast$2pi $\ast$ r/( ticks\+\_\+per\+\_\+rev $\ast$dt) \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_a43d3de94f21a171973a904b18eda4490}{calculate\+Theta\+Encoder\+Dot} ()
+\begin{DoxyCompactList}\small\item\em Theta Encoder dot calculation = Vs sin(steering angle) /l l = distance between front and back wheel. \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_ab4424670fd33e38b7089e21ee5cd7df4}{calculate\+X\+Encoder\+Dot} ()
+\begin{DoxyCompactList}\small\item\em Xencoderdot = Vs $\ast$ cos(steering angle) $\ast$ cos(theta\+\_\+encoder) \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_a825bfdaf2083d30164bf0e64d5bab8e6}{calculate\+Y\+Encoder\+Dot} ()
+\begin{DoxyCompactList}\small\item\em Y\+\_\+encoderdot = Vs $\ast$ cos(steering angle) $\ast$ sin(theta\+\_\+encoder) \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_af06d02597df5e14ee608e169942054a9}{calculate\+Steering\+Velocity\+Gyro} ()
+\begin{DoxyCompactList}\small\item\em Vs = theta\+\_\+gyro\+\_\+dot $\ast$ l /sin(steering angle) l = distance between front and back wheels. \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_aef49b0372edb2fe14499e6ae4ee237b7}{calculate\+X\+Gyro\+Dot} ()
+\begin{DoxyCompactList}\small\item\em Xgyrodot = Vs $\ast$ cos(steering angle) $\ast$ cos(theta\+\_\+gyro) \end{DoxyCompactList}\item 
+double \hyperlink{classPoseEstimator_a55a8b278aa3c3f171fff3b3501d5b14c}{calculate\+Y\+Gyro\+Dot} ()
+\begin{DoxyCompactList}\small\item\em Ygyrodot = Vs $\ast$ cos(steering angle) $\ast$ sin(theta\+\_\+gyro) \end{DoxyCompactList}\item 
+int \hyperlink{classPoseEstimator_a4dfacf5e449db6fc1398efd19e282b86}{set\+Counter} (int)
+\begin{DoxyCompactList}\small\item\em to set values to class private variables \end{DoxyCompactList}\item 
+double {\bfseries set\+X\+Encoder} (double)\hypertarget{classPoseEstimator_a4243ef5d948831d751a5dcb3685ba7ee}{}\label{classPoseEstimator_a4243ef5d948831d751a5dcb3685ba7ee}
+
+\item 
+double {\bfseries set\+Y\+Encoder} (double)\hypertarget{classPoseEstimator_abba09afe95f5a3932304987db9945e07}{}\label{classPoseEstimator_abba09afe95f5a3932304987db9945e07}
+
+\item 
+double {\bfseries set\+Theta\+Encoder} (double)\hypertarget{classPoseEstimator_a7c640b2411d1e2f1f6b0a2db78f1e61b}{}\label{classPoseEstimator_a7c640b2411d1e2f1f6b0a2db78f1e61b}
+
+\item 
+double {\bfseries set\+X\+Encoder\+Prev} (double)\hypertarget{classPoseEstimator_aec13e764bbab22c2f002b19c6ca47b91}{}\label{classPoseEstimator_aec13e764bbab22c2f002b19c6ca47b91}
+
+\item 
+double {\bfseries set\+Y\+Encoder\+Prev} (double)\hypertarget{classPoseEstimator_a302266772eaf1111aaa4d62c712cc0e8}{}\label{classPoseEstimator_a302266772eaf1111aaa4d62c712cc0e8}
+
+\item 
+double {\bfseries set\+Theta\+Encoder\+Prev} (double)\hypertarget{classPoseEstimator_a2fa4540528bc7022ccfba8ab4bf59b5c}{}\label{classPoseEstimator_a2fa4540528bc7022ccfba8ab4bf59b5c}
+
+\item 
+double {\bfseries set\+X\+Encoder\+Dot} (double)\hypertarget{classPoseEstimator_a88e7695b14216d53af1329a1e458d6dd}{}\label{classPoseEstimator_a88e7695b14216d53af1329a1e458d6dd}
+
+\item 
+double {\bfseries set\+Y\+Encoder\+Dot} (double)\hypertarget{classPoseEstimator_af20f722207d74cd65e3611c0862ce70e}{}\label{classPoseEstimator_af20f722207d74cd65e3611c0862ce70e}
+
+\item 
+double {\bfseries set\+Theta\+Encoder\+Dot} (double)\hypertarget{classPoseEstimator_a315d3a895758f846fb90ef3808b70090}{}\label{classPoseEstimator_a315d3a895758f846fb90ef3808b70090}
+
+\item 
+double {\bfseries set\+X\+Gyro} (double)\hypertarget{classPoseEstimator_a92cc048c5afcbfb3e307a5abfd38ff2c}{}\label{classPoseEstimator_a92cc048c5afcbfb3e307a5abfd38ff2c}
+
+\item 
+double {\bfseries set\+Y\+Gyro} (double)\hypertarget{classPoseEstimator_a191d5215f4091397a9d444aa2c66f7c4}{}\label{classPoseEstimator_a191d5215f4091397a9d444aa2c66f7c4}
+
+\item 
+double {\bfseries set\+Theta\+Gyro} (double)\hypertarget{classPoseEstimator_a41c82b8ea8bbf88f33b698b8204bdb36}{}\label{classPoseEstimator_a41c82b8ea8bbf88f33b698b8204bdb36}
+
+\item 
+double {\bfseries set\+X\+Gyro\+Prev} (double)\hypertarget{classPoseEstimator_aaf206af26336ea5161445263fc210ce6}{}\label{classPoseEstimator_aaf206af26336ea5161445263fc210ce6}
+
+\item 
+double {\bfseries set\+Theta\+Gyro\+Prev} (double)\hypertarget{classPoseEstimator_a8972d0c20bc91922a1aa6ea0b56387fa}{}\label{classPoseEstimator_a8972d0c20bc91922a1aa6ea0b56387fa}
+
+\item 
+double {\bfseries set\+Y\+Gyro\+Prev} (double)\hypertarget{classPoseEstimator_ac7293c24b58fdff634d155b703dfb712}{}\label{classPoseEstimator_ac7293c24b58fdff634d155b703dfb712}
+
+\item 
+double {\bfseries set\+X\+Gyro\+Dot} (double)\hypertarget{classPoseEstimator_ab2e51437a1ac10709de3319d97deb236}{}\label{classPoseEstimator_ab2e51437a1ac10709de3319d97deb236}
+
+\item 
+double {\bfseries set\+Y\+Gyro\+Dot} (double)\hypertarget{classPoseEstimator_a196c33d2a052c807e77a3458fd6ab4e1}{}\label{classPoseEstimator_a196c33d2a052c807e77a3458fd6ab4e1}
+
+\item 
+double {\bfseries set\+Theta\+Gyro\+Dot} (double)\hypertarget{classPoseEstimator_a76911475128c0761bb24eb0ca9c4834f}{}\label{classPoseEstimator_a76911475128c0761bb24eb0ca9c4834f}
+
+\item 
+double {\bfseries set\+Time\+Curr} (double)\hypertarget{classPoseEstimator_a9a3a4e2de506c138d313a5620d4bc3d7}{}\label{classPoseEstimator_a9a3a4e2de506c138d313a5620d4bc3d7}
+
+\item 
+double {\bfseries set\+Time\+Prev} (double)\hypertarget{classPoseEstimator_a21fc686b1c275913349329ef9e99510c}{}\label{classPoseEstimator_a21fc686b1c275913349329ef9e99510c}
+
+\item 
+double {\bfseries set\+Wheel\+Rad} (double)\hypertarget{classPoseEstimator_acf080e73128ca35d143061bd96359a9c}{}\label{classPoseEstimator_acf080e73128ca35d143061bd96359a9c}
+
+\item 
+double {\bfseries set\+Distace\+Bet\+Wheels} (double)\hypertarget{classPoseEstimator_aef6d8997cc1ae4732b8f2735b36ca5e4}{}\label{classPoseEstimator_aef6d8997cc1ae4732b8f2735b36ca5e4}
+
+\item 
+double {\bfseries set\+Steering\+Angle} (double)\hypertarget{classPoseEstimator_a75b0e97e14dbf0077bd6fd0d5103e42a}{}\label{classPoseEstimator_a75b0e97e14dbf0077bd6fd0d5103e42a}
+
+\item 
+int {\bfseries set\+Encoder\+Ticks\+Prev} (int)\hypertarget{classPoseEstimator_a71f7c9555c0bd2cd00a42eac52dc3cdf}{}\label{classPoseEstimator_a71f7c9555c0bd2cd00a42eac52dc3cdf}
+
+\item 
+int {\bfseries set\+Encoder\+Ticks\+Curr} (int)\hypertarget{classPoseEstimator_a97d82c0daa4cc961f4e0d6afeb0ff40d}{}\label{classPoseEstimator_a97d82c0daa4cc961f4e0d6afeb0ff40d}
+
+\item 
+double {\bfseries set\+Angular\+Velocity} (double)\hypertarget{classPoseEstimator_a21e52b4a18b8a7da2123e3ca47276aff}{}\label{classPoseEstimator_a21e52b4a18b8a7da2123e3ca47276aff}
+
+\item 
+double {\bfseries set\+Filtergain} (double)\hypertarget{classPoseEstimator_a8bf066126aad31719a9ca250bd3c753d}{}\label{classPoseEstimator_a8bf066126aad31719a9ca250bd3c753d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main Pose Estimator Class carrying out all operations using complimentary filter. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Pose\+Estimator@{Pose\+Estimator}!Pose\+Estimator@{Pose\+Estimator}}
+\index{Pose\+Estimator@{Pose\+Estimator}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{Pose\+Estimator(double \&, double \&, int \&, double \&)}{PoseEstimator(double &, double &, int &, double &)}}]{\setlength{\rightskip}{0pt plus 5cm}Pose\+Estimator\+::\+Pose\+Estimator (
+\begin{DoxyParamCaption}
+\item[{double \&}]{wheel\+\_\+rad, }
+\item[{double \&}]{distance\+\_\+between\+\_\+front\+\_\+back\+\_\+wheels, }
+\item[{int \&}]{ticks\+\_\+per\+\_\+revolution, }
+\item[{double \&}]{gain}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_ab849608b7d2bc4b7c9e3bee1219a3997}{}\label{classPoseEstimator_ab849608b7d2bc4b7c9e3bee1219a3997}
+
+
+Constructor. 
+
+double wheel radius  double distance between front and back wheels  int ticks per revolution  double complimentary filter gain 
+
+\subsection{Member Function Documentation}
+\index{Pose\+Estimator@{Pose\+Estimator}!calculate\+Dt@{calculate\+Dt}}
+\index{calculate\+Dt@{calculate\+Dt}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+Dt()}{calculateDt()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+Dt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a2e17dfd1a685355806d63dfde8dcb3e1}{}\label{classPoseEstimator_a2e17dfd1a685355806d63dfde8dcb3e1}
+
+
+To calculate the values of private variables. 
+
+Calculating difference in time.
+
+difference \index{Pose\+Estimator@{Pose\+Estimator}!calculate\+Steering\+Velocity@{calculate\+Steering\+Velocity}}
+\index{calculate\+Steering\+Velocity@{calculate\+Steering\+Velocity}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+Steering\+Velocity()}{calculateSteeringVelocity()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+Steering\+Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_acedaa62b4904ba067f3eae3e548e6b91}{}\label{classPoseEstimator_acedaa62b4904ba067f3eae3e548e6b91}
+
+
+To calculate steering velocity = (tick difference)$\ast$2pi $\ast$ r/( ticks\+\_\+per\+\_\+rev $\ast$dt) 
+
+\index{Pose\+Estimator@{Pose\+Estimator}!calculate\+Steering\+Velocity\+Gyro@{calculate\+Steering\+Velocity\+Gyro}}
+\index{calculate\+Steering\+Velocity\+Gyro@{calculate\+Steering\+Velocity\+Gyro}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+Steering\+Velocity\+Gyro()}{calculateSteeringVelocityGyro()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+Steering\+Velocity\+Gyro (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_af06d02597df5e14ee608e169942054a9}{}\label{classPoseEstimator_af06d02597df5e14ee608e169942054a9}
+
+
+Vs = theta\+\_\+gyro\+\_\+dot $\ast$ l /sin(steering angle) l = distance between front and back wheels. 
+
+Steering Velocity as per gyroscope measurement values \index{Pose\+Estimator@{Pose\+Estimator}!calculate\+Theta\+Encoder\+Dot@{calculate\+Theta\+Encoder\+Dot}}
+\index{calculate\+Theta\+Encoder\+Dot@{calculate\+Theta\+Encoder\+Dot}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+Theta\+Encoder\+Dot()}{calculateThetaEncoderDot()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+Theta\+Encoder\+Dot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a43d3de94f21a171973a904b18eda4490}{}\label{classPoseEstimator_a43d3de94f21a171973a904b18eda4490}
+
+
+Theta Encoder dot calculation = Vs sin(steering angle) /l l = distance between front and back wheel. 
+
+\index{Pose\+Estimator@{Pose\+Estimator}!calculate\+X\+Encoder\+Dot@{calculate\+X\+Encoder\+Dot}}
+\index{calculate\+X\+Encoder\+Dot@{calculate\+X\+Encoder\+Dot}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+X\+Encoder\+Dot()}{calculateXEncoderDot()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+X\+Encoder\+Dot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_ab4424670fd33e38b7089e21ee5cd7df4}{}\label{classPoseEstimator_ab4424670fd33e38b7089e21ee5cd7df4}
+
+
+Xencoderdot = Vs $\ast$ cos(steering angle) $\ast$ cos(theta\+\_\+encoder) 
+
+Xencoder\+\_\+dot ,velocity calculated using encoder values in x -\/direction \index{Pose\+Estimator@{Pose\+Estimator}!calculate\+X\+Gyro\+Dot@{calculate\+X\+Gyro\+Dot}}
+\index{calculate\+X\+Gyro\+Dot@{calculate\+X\+Gyro\+Dot}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+X\+Gyro\+Dot()}{calculateXGyroDot()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+X\+Gyro\+Dot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_aef49b0372edb2fe14499e6ae4ee237b7}{}\label{classPoseEstimator_aef49b0372edb2fe14499e6ae4ee237b7}
+
+
+Xgyrodot = Vs $\ast$ cos(steering angle) $\ast$ cos(theta\+\_\+gyro) 
+
+double Xgyro\+\_\+\+Dot \index{Pose\+Estimator@{Pose\+Estimator}!calculate\+Y\+Encoder\+Dot@{calculate\+Y\+Encoder\+Dot}}
+\index{calculate\+Y\+Encoder\+Dot@{calculate\+Y\+Encoder\+Dot}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+Y\+Encoder\+Dot()}{calculateYEncoderDot()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+Y\+Encoder\+Dot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a825bfdaf2083d30164bf0e64d5bab8e6}{}\label{classPoseEstimator_a825bfdaf2083d30164bf0e64d5bab8e6}
+
+
+Y\+\_\+encoderdot = Vs $\ast$ cos(steering angle) $\ast$ sin(theta\+\_\+encoder) 
+
+Yencoder\+\_\+dot ,velocity calculated using encoder values in x -\/direction \index{Pose\+Estimator@{Pose\+Estimator}!calculate\+Y\+Gyro\+Dot@{calculate\+Y\+Gyro\+Dot}}
+\index{calculate\+Y\+Gyro\+Dot@{calculate\+Y\+Gyro\+Dot}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{calculate\+Y\+Gyro\+Dot()}{calculateYGyroDot()}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::calculate\+Y\+Gyro\+Dot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a55a8b278aa3c3f171fff3b3501d5b14c}{}\label{classPoseEstimator_a55a8b278aa3c3f171fff3b3501d5b14c}
+
+
+Ygyrodot = Vs $\ast$ cos(steering angle) $\ast$ sin(theta\+\_\+gyro) 
+
+double Ygyro\+\_\+\+Dot \index{Pose\+Estimator@{Pose\+Estimator}!complimentary\+Filter@{complimentary\+Filter}}
+\index{complimentary\+Filter@{complimentary\+Filter}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{complimentary\+Filter(double, double)}{complimentaryFilter(double, double)}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::complimentary\+Filter (
+\begin{DoxyParamCaption}
+\item[{double}]{encoder\+\_\+val, }
+\item[{double}]{gyro\+\_\+val}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a3d51891c28fb88bb320678b499a1baec}{}\label{classPoseEstimator_a3d51891c28fb88bb320678b499a1baec}
+
+
+Complimentary Filter which combines encoder and gyroscope measurements to get good predictions. 
+
+Complimentary Filter output = gain(\+Measurement 1) + (1-\/gain)$\ast$(measurement2)  encoder\+\_\+val encoder predicted values  gyro\+\_\+val gyroscope predicted values.
+
+double encoder estimated pose  double gyroscope estimated pose
+
+Predicted Pose
+
+double \index{Pose\+Estimator@{Pose\+Estimator}!estimate@{estimate}}
+\index{estimate@{estimate}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{estimate(double \&, double \&, int \&, double \&)}{estimate(double &, double &, int &, double &)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ Pose\+Estimator\+::estimate (
+\begin{DoxyParamCaption}
+\item[{double \&}]{time\+\_\+c, }
+\item[{double \&}]{steering\+\_\+angle, }
+\item[{int \&}]{encoder\+\_\+ticks, }
+\item[{double \&}]{theta\+\_\+gyro\+\_\+dot}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_adafcdfe397a5f4242429ac8b6fc44d5e}{}\label{classPoseEstimator_adafcdfe397a5f4242429ac8b6fc44d5e}
+
+
+To Estimate the poses of the tricycle using given data. 
+
+Estimates the pose of the tricycle.
+
+double current time  double steering angle  int encoder ticks  double angular velocity as measured by gyroscope
+
+poses
+
+time\+\_\+c = current time  steering\+\_\+angle  encoder\+\_\+ticks  theta\+\_\+gyro\+\_\+dot
+
+vector containing Heading/\+Pose \mbox{[} x, y,theta\mbox{]} \index{Pose\+Estimator@{Pose\+Estimator}!integrate\+Variable@{integrate\+Variable}}
+\index{integrate\+Variable@{integrate\+Variable}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{integrate\+Variable(double, double)}{integrateVariable(double, double)}}]{\setlength{\rightskip}{0pt plus 5cm}double Pose\+Estimator\+::integrate\+Variable (
+\begin{DoxyParamCaption}
+\item[{double}]{val, }
+\item[{double}]{val\+\_\+dot}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_aabd43cbb110bf359e4236d055730cf39}{}\label{classPoseEstimator_aabd43cbb110bf359e4236d055730cf39}
+
+
+To integrate velocity to get position ;angular velocity to get theta. 
+
+To integrate variables integral\+\_\+X in discrete = x\+\_\+old + dt$\ast$ x\+\_\+dot.
+
+double previous value  double position/theta value to be integrated
+
+val variable  val\+\_\+dot differential of the variable1\index{Pose\+Estimator@{Pose\+Estimator}!preprocess\+Steering\+Angle@{preprocess\+Steering\+Angle}}
+\index{preprocess\+Steering\+Angle@{preprocess\+Steering\+Angle}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{preprocess\+Steering\+Angle()}{preprocessSteeringAngle()}}]{\setlength{\rightskip}{0pt plus 5cm}void Pose\+Estimator\+::preprocess\+Steering\+Angle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a68fc4e65d149c62721d5f6d25e7f0181}{}\label{classPoseEstimator_a68fc4e65d149c62721d5f6d25e7f0181}
+
+
+To process steering angle if its more than 90 degree. 
+
+To preprocess steering angle. \index{Pose\+Estimator@{Pose\+Estimator}!set\+Counter@{set\+Counter}}
+\index{set\+Counter@{set\+Counter}!Pose\+Estimator@{Pose\+Estimator}}
+\subsubsection[{\texorpdfstring{set\+Counter(int)}{setCounter(int)}}]{\setlength{\rightskip}{0pt plus 5cm}int Pose\+Estimator\+::set\+Counter (
+\begin{DoxyParamCaption}
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\hypertarget{classPoseEstimator_a4dfacf5e449db6fc1398efd19e282b86}{}\label{classPoseEstimator_a4dfacf5e449db6fc1398efd19e282b86}
+
+
+to set values to class private variables 
+
+int/double
+
+input value to be set 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bob/\+Bob\+\_\+old/tri-\/comp/\+Tricycle\+\_\+\+Pose\+Estimation\+\_\+\+C\+F/include/\hyperlink{PoseEstimator_8hpp}{Pose\+Estimator.\+hpp}\item 
+/home/bob/\+Bob\+\_\+old/tri-\/comp/\+Tricycle\+\_\+\+Pose\+Estimation\+\_\+\+C\+F/app/Pose\+Estimator.\+cpp\end{DoxyCompactItemize}
